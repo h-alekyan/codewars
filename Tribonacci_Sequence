@@ -1,0 +1,10 @@
+def tribonacci(signature, n):
+    tribolist = [signature[0], signature[1], signature[2]]
+    if n == 0:
+        return []
+    if n < 3:
+        return tribolist[:n]
+    for i in range(n-3):
+        newnum = tribolist[-1] + tribolist[-2] + tribolist[-3]
+        tribolist.append(newnum)
+    return tribolist
