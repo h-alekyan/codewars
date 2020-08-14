@@ -1,0 +1,6 @@
+def solution(number):
+  numlist = []
+  for num in range(number):
+      if num % 3 == 0 or num % 5 == 0:
+          numlist.append(num)
+  return sum(numlist)
