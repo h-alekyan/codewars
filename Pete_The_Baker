@@ -1,0 +1,13 @@
+def cakes(recipe, available):
+    vallist = []
+    for key, value in recipe.items():
+        if key in available.keys():
+            val = 0
+            while available[key] >= recipe[key]:
+                available[key] -= recipe[key]
+                val += 1
+            vallist.append(val)
+        else:
+            return 0
+    return min(vallist)        
+        
