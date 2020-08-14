@@ -1,0 +1,16 @@
+def order(sentence):
+    sen = sentence.split(" ")
+    archive = {}
+    finalstring = ""
+    for word in sen:
+        for char in word:
+            try:
+                int(char)
+                archive[word] = int(char)
+            except: 
+                pass
+    mu = sorted(archive.items(), key=lambda item: item[1])
+    for key, value in mu:
+        finalstring += key + " " 
+    finalstring = finalstring.strip()
+    return finalstring
