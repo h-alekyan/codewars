@@ -1,0 +1,34 @@
+class RomanNumerals:
+    def to_roman(num):
+        val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+        syb = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+        roman_num = ''
+        i = 0
+        while num > 0:
+            for _ in range(num //val[i]):
+                roman_num += syb[i]
+                num -= val[i]
+            i += 1
+        return roman_num
+    def from_roman(roman_num):
+        mapped = {"M" : 1000, "CM" : 900, "D" : 500, "CD" : 400, "C" : 100, "XC" : 90, "L" : 50, "XL" : 40, "X" : 10, "IX" : 9, "V" : 5, "IV" : 4, "I" : 1}
+        num = 0
+        myrange = len(roman_num)-1
+        i = 0
+        while i < myrange:
+            if roman_num[i]+roman_num[i+1] == "CM" or roman_num[i]+roman_num[i+1] == "CD" or roman_num[i]+roman_num[i+1] == "XC" or roman_num[i]+roman_num[i+1] == "XL" or roman_num[i]+roman_num[i+1] == "IX" or roman_num[i]+roman_num[i+1] == "IV":
+                tempv = roman_num[i] + roman_num[i+1]
+                num += mapped[tempv]
+                roman_num = roman_num.replace(tempv, "")
+                i += 2
+                print(roman_num)
+                continue
+            num += mapped[roman_num[i]]
+            roman_num.replace(roman_num[i], "")
+            i += 1
+        if len(roman_num) == 0:
+            return num
+        else:
+            num += mapped[roman_num[-1]]
+            return num
+            
