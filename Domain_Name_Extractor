@@ -1,0 +1,21 @@
+def domain_name(url):
+    print(url)
+    if 'www.' in url:
+        url = url.replace("www.", "&")
+        startpoint = url.find("&")
+        endpoint = url.find(".")
+        return url[startpoint+1:endpoint]
+    if "http://" in url:
+        url = url.replace("http://", "&")
+        startpoint = url.find('&')
+        endpoint = url.find(".")
+        return url[startpoint+1:endpoint]
+    if "https://" in url:
+        url = url.replace("https://", "&")
+        startpoint = url.find('&')
+        endpoint = url.find(".")
+        return url[startpoint+1:endpoint]
+    else:
+        endpoint = url.find(".")
+        return url[:endpoint]
+    
